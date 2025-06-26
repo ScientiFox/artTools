@@ -8,14 +8,14 @@ This project is a little tool to help artists- it's basically a free collection 
     Posterize (quantization and minimum level-suppression)<br/>
     Sobel filter (edge detection- color and grayscale both)<br/>
     Invert (color flipping)<br/>
-  - _Convolution filters_
+  - _Convolution filters_:<br/>
     Blur filter (averaging)<br/>
     Median filter (noise suppressing)<br/>
     Sharpen (unsharp mask)<br/>
     Clamp (low and high level suppression)<br/>
-  - _Overlays_<br/>
+  - _Overlays_:<br/>
     Grid<br/>
-  - _Utilities_<br/>
+  - _Utilities_:<br/>
     Undo (with a 10 frame queue depth)<br/>
     Save (saves the current frame with a unique file name)<br/>
 
