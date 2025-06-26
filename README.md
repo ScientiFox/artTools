@@ -1,3 +1,5 @@
+
+<h2> ArtTools!</h2>
 This project is a little tool to help artists- it's basically a free collection of the most common tools we've noticed artists wanting. It's packed up with the back end stuff 100% in javascript to make it universally portable in-browser, so there's no extra downloads or accounts or anything.
 
 **The utility currently includes:**
