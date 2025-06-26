@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.columns {
+	width: 100%;
+	padding: 50px 0 0 10px;
+}
+
+/*Columns both aligned to top, padding to separate them a littl*/
+.columnLeft {
+	width: 30%;
+	vertical-align: top;
+}
+.columnRight {
+	width: 70%;
+	vertical-align: top;
+	padding: 0 0 0 20px;
+}
+.simpleBorder {
+	border:1px solid #000000;
+}
+.warningOn {
+	border: 1px solid #FF0000;
+	color: red;
+	margin-top:20px;
+	display: inline-block;
+	padding:2px;
+}
+.warningOff{
+	margin-top:30px;
+	display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Art Tools</h2>
+
+<h3>Load an image and manipulate it!</h3>
+
+<!-- <button onclick="onClick()">Button</button> -->
+
+<div style = "height:60px">
+	<div id="clock"></div>
+	<div id="warnText" style="margin:20px;"> </div>
+</div>
+
+<table class="columns">
+<tr>
+	<td class="columnLeft">
+		<input type="file" id="theImage" name="theImage" accept="image/*" onchange="onChange()">
+			<span>    </span> 
+			<button onclick="saveCanvasImage();">Save</button>
+		<hr>
+		<button onclick="undo();">Undo</button><span id="undoCtr"></span>
+		<hr>
+		<button onclick="greyscale();">Greyscale</button>
+		<button onclick="posterize();">Posterize</button>
+		<button onclick="Sobel();">Sobel</button>
+		<button onclick="invertColor();">Invert</button>
+		<hr>
+		<button onclick="blurImg();">Blur</button> 
+			Kernel: <input type="number" id="blurKern" min='1' max='30' value='3'>
+		<button onclick="filterImg();">Filter</button>
+			Kernel: <input type="number" id="filterKern" min='1' max='30' value='3'>
+		<br/>
+		<button onclick="sharpenImg();" style="margin-top:10px;">Sharpen</button>
+			Kernel: <input type="number" id="sharpKern" min='1' max='30' value='3'>
+			Scale: <input type="number" id="sharpScale" min='1' max='20' value='5'>
+		<br/>
+		<button onclick="clampColor();" style="margin-top:10px;">Clamp</button>
+			Lower Limit: <input type="number" id="clampLower" min='0' max='255' value='0'>
+			Upper Limit: <input type="number" id="clampUpper" min='0' max='255' value='255'>
+		<hr>
+		<button onclick="gridImg();">Grid</button>
+			Horizontal <input type="number" id="hLines" min='1' max='20' value='1'>
+			Vertical<input type="number" id="vLines" min='1' max='20' value='1'> 
+			Width<input type="number" id="lWidth" min='1' max='20' value='3'>
+		<hr>
+	</td>
+	<td class="columnRight">
+		<span id="file"></span> <br/>
+		<canvas id="canvas" width="200" height="200" class="simpleBorder">
+		A canvas.
+		</canvas>
+		<br/>
+	</td>
+</tr>
+</table>
+
+<img id="mainImage" src="" style="width:300px">
+
+<script src='artTools.js'></script>
+</body>
+</html>
