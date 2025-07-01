@@ -255,6 +255,60 @@ function filterImg(){
 	ctx.putImageData(imageData,0,0); //and push to cnavas
 }
 
+function equalizeHist(){
+	saveImageData() //Save for undo
+
+	//Image values for processing
+	const imageData = ctx.getImageData(0, 0, img.width, img.height);
+	const data = imageData.data;
+	//single pixel ops don't need an output holder, btw.
+
+	histogram = new Array(256);
+	minSeen = 256;
+	maxSeen = -1;
+	for (let i=0;i<data.length;i++){
+		val = data[i];
+		for (let j=val;j<255;j++){histogram[j] = histogram[j] + 1;}
+		if (val<minSeen){minSeen=val;}
+		if (val>maxSeen){maxSeen=val;}
+	}
+	for (let i=0;i<data.length;i++){
+		val = data[i];
+		data[i] = Math.ceil(255*(data[i]-minSeen)/(maxSeen-minSeen))-1;
+	}
+	ctx.putImageData(imageData,0,0);//push to canvas
+}
+
+function remapImage(){
+	saveImageData() //Save for undo
+
+	//Image values for processing
+	const imageData = ctx.getImageData(0, 0, img.width, img.height);
+	const data = imageData.data;
+	//single pixel ops don't need an output holder, btw.
+
+	//thresholds from inputs
+	let lower = parseInt(document.getElementById('remapLower').value);
+	let upper = parseInt(document.getElementById('remapUpper').value);
+	let range = upper-lower;
+
+	//Looping over all pixels
+	for (let i=0;i<img.width;i++){
+		for (let j=0;j<img.height;j++){
+			cR = 4*(i + img.width*j); //R value index
+			cG = cR + 1;
+			cB = cR + 2;
+
+			for (let k=0;k<3;k++){
+				if (data[cR+k]<lower){data[cR+k]=0;}
+				else if (data[cR+k]>upper){data[cR+k]=255;}
+				else {data[cR+k]=255*(data[cR+k]-lower)/range;}
+			}
+		}
+	}
+	ctx.putImageData(imageData,0,0);//push to canvas
+}
+
 //Simple function to do posterizing map
 function posterCMap(c){return 128*Math.floor(3*(c/255.0));}
 
@@ -488,6 +542,7 @@ function onChange(){
 		objectURL = window.URL.createObjectURL(file); //Make a new objectURL for the new image
 		img.src = objectURL; //Put it into the image variable in the DOM
 		setTimeout(()=>{isReady = true;},200); //A 200ms delay before marking the file as ready, for load-in time
+		prevData = [];
 	}
 	else{alert("NO FILE!!!");} //If there's not a file loaded, let the user know!
 }

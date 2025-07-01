@@ -9,11 +9,11 @@
 
 /*Columns both aligned to top, padding to separate them a littl*/
 .columnLeft {
-	width: 30%;
+	width: 40%;
 	vertical-align: top;
 }
 .columnRight {
-	width: 70%;
+	width: 60%;
 	vertical-align: top;
 	padding: 0 0 0 20px;
 }
@@ -60,6 +60,7 @@
 		<button onclick="posterize();">Posterize</button>
 		<button onclick="Sobel();">Sobel</button>
 		<button onclick="invertColor();">Invert</button>
+		<button onclick="equalizeHist();">Equalize</button>
 		<hr>
 		<button onclick="blurImg();">Blur</button> 
 			Kernel: <input type="number" id="blurKern" min='1' max='30' value='3'>
@@ -73,6 +74,11 @@
 		<button onclick="clampColor();" style="margin-top:10px;">Clamp</button>
 			Lower Limit: <input type="number" id="clampLower" min='0' max='255' value='0'>
 			Upper Limit: <input type="number" id="clampUpper" min='0' max='255' value='255'>
+		<br/>
+		<button onclick="remapImage();" style="margin-top:10px;">Remap</button>
+			Lower Limit: <input type="number" id="remapLower" min='0' max='255' value='0'>
+			Upper Limit: <input type="number" id="remapUpper" min='0' max='255' value='255'>
+
 		<hr>
 		<button onclick="gridImg();">Grid</button>
 			Horizontal <input type="number" id="hLines" min='1' max='20' value='1'>
