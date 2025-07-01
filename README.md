@@ -10,11 +10,13 @@ This project is a little tool to help artists- it's basically a free collection 
     Posterize (quantization and minimum level-suppression)<br/>
     Sobel filter (edge detection- color and grayscale both)<br/>
     Invert (color flipping)<br/>
+    Histogram equalization<br/>
   - _Convolution filters_:<br/>
     Blur filter (averaging)<br/>
     Median filter (noise suppressing)<br/>
     Sharpen (unsharp mask)<br/>
     Clamp (low and high level suppression)<br/>
+    Remapping (clamp w/o low level setting)<br/>
   - _Overlays_:<br/>
     Grid<br/>
   - _Utilities_:<br/>
